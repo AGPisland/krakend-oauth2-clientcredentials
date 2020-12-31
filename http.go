@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 	"strings"
-
+	"fmt"
 	"golang.org/x/oauth2/clientcredentials"
 
 	"github.com/devopsfaith/krakend/config"
@@ -17,6 +17,7 @@ const Namespace = "github.com/devopsfaith/krakend-oauth2-clientcredentials"
 // NewHTTPClient creates a HTTPClientFactory with an http client configured for dealing
 // with all the logic related to the oauth2 client credentials grant
 func NewHTTPClient(cfg *config.Backend) client.HTTPClientFactory {
+	fmt.Println("work")
 	oauth, ok := configGetter(cfg.ExtraConfig).(Config)
 	if !ok || oauth.IsDisabled {
 		return client.NewHTTPClient
